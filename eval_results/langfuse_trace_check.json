@@ -1,0 +1,95 @@
+{
+  "exported_at": "2026-11-25T08:49:04.226570Z",
+  "host": "cloud.langfuse.com",
+  "observations": [
+    {
+      "name": "memory_extract_facts",
+      "type": "GENERATION",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "0458aaa29f5e0839",
+      "model": null,
+      "usage": {
+        "input": 297,
+        "output": 5,
+        "total": 302
+      }
+    },
+    {
+      "name": "agent:safety_reviewer",
+      "type": "AGENT",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "0458aaa29f5e0839",
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "tool:check_eligibility",
+      "type": "TOOL",
+      "traceId": "4fa880fc88fabab4743fc9f82b1c72d2",
+      "parentObservationId": null,
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "mcp:check_eligibility",
+      "type": "TOOL",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "73b7c60e47c16747",
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "agent:policy_agent",
+      "type": "AGENT",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "0458aaa29f5e0839",
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "intake_parse",
+      "type": "GENERATION",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "176ca104de75826a",
+      "model": null,
+      "usage": {
+        "input": 884,
+        "output": 147,
+        "total": 1031
+      }
+    },
+    {
+      "name": "intake",
+      "type": "SPAN",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "0458aaa29f5e0839",
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "agent:intake_agent",
+      "type": "AGENT",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": "98c635f0d04e50e3",
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "chat",
+      "type": "SPAN",
+      "traceId": "49cc80fb2c43e8d7e99ea71cf37a874d",
+      "parentObservationId": null,
+      "model": null,
+      "usage": {}
+    },
+    {
+      "name": "careflow-connection-check",
+      "type": "SPAN",
+      "traceId": "8b4dd320d5856dd4d5d37b897cd567b7",
+      "parentObservationId": null,
+      "model": null,
+      "usage": {}
+    }
+  ],
+  "note": "Nested trace from one eligibility request (chat > intake > generation; policy_agent > MCP tool). No keys included."
+}

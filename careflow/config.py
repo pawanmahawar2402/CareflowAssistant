@@ -37,8 +37,8 @@ class Settings(BaseSettings):
     ticket_db: str = "runtime/tickets.sqlite"
 
     # ── Observability
-    langfuse_public_key: str = ""
-    langfuse_secret_key: str = ""
+    langfuse_public_key: str = ""   # set in .env (never in code)
+    langfuse_secret_key: str = ""   # set in .env (never in code)
     langfuse_host: str = "https://cloud.langfuse.com"
     kpi_log: str = "runtime/kpi.jsonl"
 

@@ -119,6 +119,8 @@ class InsurancePolicyAgent:
             res = await llm.acomplete(messages, name="policy_rag_answer")
             text = res.content.strip()
             if text.upper().startswith("UNANSWERABLE"):
+                log.warning("model answered UNANSWERABLE; top rerank score=%s question=%r",
+                            safe[0].rerank_score if safe else None, question[:120])
                 return RAGResult(NOT_FOUND_ANSWER, False, safe, flags=flags + ["model_unanswerable"],
                                  used_fallback=res.used_fallback)
             cites = _cited_ids(text)
