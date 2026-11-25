@@ -125,3 +125,21 @@ async def test_memory_is_not_shared_between_users():
     st = await wf.run("What did we do last time?", _sid(), user_id=other)
     assert "REF-0003" not in st["response"]
     assert "don't have a record" in st["response"]
+
+
+async def test_denied_referral_reads_the_appeal_policy_over_mcp():
+    """M6.C6: a read_resource call over MCP, made by the referral agent for a denied referral."""
+    st = await wf.run("Where is my referral REF-0013?", _sid())
+    assert "denied" in st["response"]
+    assert "appeal" in st["response"].lower()
+
+
+async def test_agents_can_only_read_resources_in_their_own_scope():
+    import pytest as _pt
+
+    from careflow.m6_agents.team import POLICY_MCP, REFERRAL_MCP
+
+    with _pt.raises(PermissionError):
+        await POLICY_MCP.read("careflow://policy/referral_policy")  # policy agent may read plans only
+    text = await REFERRAL_MCP.read("careflow://policy/referral_policy")
+    assert "appeal" in text.lower()

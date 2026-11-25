@@ -8,7 +8,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -105,7 +105,12 @@ async def chat(req: ChatRequest) -> ChatResponse:
             st = await wf.run(req.message, sid, req.channel, user_id=req.user_id)
     except CircuitOpenError:
         raise HTTPException(503, "LLM temporarily unavailable; please retry shortly")
-    return _to_response(sid, st)
+    out = _to_response(sid, st)
+    if st.get("route") == "refuse" and st.get("guardrail_flags"):
+        # an explicit status and reason for guardrail rejections (M8.C4); the body still carries the reply
+        return JSONResponse(status_code=422, content={
+            **out.model_dump(), "reason": st.get("refusal_reason"), "guardrail_flags": st["guardrail_flags"]})
+    return out
 
 
 @app.post("/review", response_model=ChatResponse)

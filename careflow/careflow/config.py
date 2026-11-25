@@ -63,6 +63,7 @@ class Settings(BaseSettings):
     # below this the corpus is treated as not answering. Tuned on the retrieval golden set:
     # answerable top scores were all >= +5.3; unanswerable ones were -3.7 and -10.1. 0.0 sits in the gap.
     rag_min_rerank_score: float = 0.0
+    rag_max_attempts: int = 2  # answer generations allowed when the citation check fails
 
     # ── Guardrail thresholds (tuned on the golden set; defined once here)
     injection_block_score: float = 0.5

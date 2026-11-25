@@ -1,0 +1,30 @@
+{
+  "run_at": "2026-11-25T05:57:22.239488+00:00",
+  "user_id": "pt-sem-a04c66",
+  "preference_turn_route": "auto",
+  "facts_stored_after_turn1": {
+    "preferred_channel": "SMS"
+  },
+  "later_question": "How will appointment reminders be sent to me?",
+  "trials": [
+    {
+      "trial": 1,
+      "answer": "Appointment reminders can be sent by SMS, email, or phone call in the patient's preferred language [language_and_accessibility#1]. SMS is your stated preference [patient_context].",
+      "applied": true
+    },
+    {
+      "trial": 2,
+      "answer": "Appointment reminders can be sent by SMS, email or phone call [language_and_accessibility#1]. Your stated preference is SMS [patient_context].",
+      "applied": true
+    },
+    {
+      "trial": 3,
+      "answer": "Appointment reminders can be sent by SMS, email, or phone call in the patient's preferred language [language_and_accessibility#1]. SMS is your stated preference [patient_context].",
+      "applied": true
+    }
+  ],
+  "applied_in": 3,
+  "trials_total": 3,
+  "rule": "applied = a sentence names SMS together with the patient's stated preference (the corpus lists SMS, email and phone call, so a bare list of channels does not count).",
+  "rescored_with_rule_on_saved_answers": true
+}

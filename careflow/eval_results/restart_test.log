@@ -1,0 +1,20 @@
+== run 1: fresh server
+{"status":"ok","llm_circuit":"closed"}
+-- referral status for patient pt-restart-01 (episode is written)
+{"session_id":"s-a","response":"Referral REF-0003 (Gastroenterology) is currently scheduled (urgency: routine).","route":"auto","pending_human":false,"escalation_ticket":null}
+-- emergency pauses for staff
+{"session_id":"hitl-1","response":"Your message describes symptoms that may be an emergency. Please call 911 or go to the nearest emergency room right now. Our clinical staff have been alerted.","route":"human_review","pending_human":true,"escalation_ticket":null}
+== KILL -9 the server
+scripts/restart_test.sh: line 15: 51313 Killed: 9               PYTHONPATH="$ROOT" "$PY" scripts/serve_stub.py >> "$LOG.server" 2>&1
+== run 2: new process, same data stores
+-- new session, same patient: what did we do last time?
+{"session_id":"s-b","response":"Last time (2026-11-25), Referral REF-0003 (Gastroenterology) is currently scheduled (urgency: routine).","route":"auto","pending_human":false,"escalation_ticket":null}
+-- staff approves the case paused in run 1
+{"session_id":"hitl-1","response":"Your message describes symptoms that may be an emergency. Please call 911 or go to the nearest emergency room right now. Our clinical staff have been alerted.","route":"human_review","pending_human":false,"escalation_ticket":"TKT-9E1FD4"}
+-- approve again: must return the same ticket
+{"session_id":"hitl-1","response":"Your message describes symptoms that may be an emergency. Please call 911 or go to the nearest emergency room right now. Our clinical staff have been alerted.","route":"human_review","pending_human":false,"escalation_ticket":"TKT-9E1FD4"}
+-- privacy delete, then recall
+{"user_id":"pt-restart-01","keys_deleted":1}
+{"session_id":"s-c","response":"I don't have a record of an earlier request from you yet.","route":"auto","pending_human":false,"escalation_ticket":null}
+scripts/restart_test.sh: line 15: 51349 Killed: 9               PYTHONPATH="$ROOT" "$PY" scripts/serve_stub.py >> "$LOG.server" 2>&1
+== done

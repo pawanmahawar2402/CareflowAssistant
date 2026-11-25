@@ -58,7 +58,8 @@ async def guard_input(state: CareFlowState) -> dict[str, Any]:
     if res.allowed:
         return {"route": "auto"}
     route = "human_review" if res.category == "emergent" else "refuse"
-    return {"route": route, "response": res.message, "refusal_reason": f"Input guardrail: {res.category}"}
+    return {"route": route, "response": res.message, "refusal_reason": f"Input guardrail: {res.category}",
+            "guardrail_flags": list(res.flags)}
 
 
 async def recall(state: CareFlowState) -> dict[str, Any]:
@@ -79,7 +80,8 @@ async def intake(state: CareFlowState) -> dict[str, Any]:
         return {**out, "route": "refuse", "response": UNAVAILABLE, "refusal_reason": "Intake unavailable"}
     pr = out["patient_request"]
     if pr["clinical_advice_sought"]:
-        return {**out, "route": "refuse", "response": REFUSAL, "refusal_reason": "Clinical advice sought"}
+        return {**out, "route": "refuse", "response": REFUSAL, "refusal_reason": "Clinical advice sought",
+                "guardrail_flags": ["clinical_advice_request"]}
     if pr["urgency"] == "emergent":
         return {**out, "route": "human_review", "response": EMERGENCY}
     return {**out, "route": "auto"}
@@ -110,7 +112,8 @@ async def revise(state: CareFlowState) -> dict[str, Any]:
 
 async def review_failed(state: CareFlowState) -> dict[str, Any]:
     """The draft was rejected and no revision budget is left: never release it."""
-    return {"response": REFUSAL, "route": "refuse", "refusal_reason": "Draft failed safety review"}
+    return {"response": REFUSAL, "route": "refuse", "refusal_reason": "Draft failed safety review",
+            "guardrail_flags": ["output_safety_review"]}
 
 
 # ── Terminal nodes ───────────────────────────────────────────────────────────

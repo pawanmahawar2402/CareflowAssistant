@@ -1,0 +1,25 @@
+{
+  "run_at": "2026-11-25T05:45:07.506996+00:00",
+  "fault_rate": 0.3,
+  "seed": 7,
+  "calls_per_configuration": 500,
+  "note": "stub model; faults injected at the LLM layer; backoff shortened to 0.01s and breaker recovery to 0.5s for the run (production: 1.0s base backoff, 30s recovery)",
+  "baseline": {
+    "calls": 500,
+    "successes": 332,
+    "success_rate": 0.664,
+    "retries_total": 0,
+    "fallback_calls": 0,
+    "mean_latency_ms": 0.78,
+    "p95_latency_ms": 0.16
+  },
+  "hardened": {
+    "calls": 500,
+    "successes": 500,
+    "success_rate": 1.0,
+    "retries_total": 227,
+    "fallback_calls": 7,
+    "mean_latency_ms": 7.57,
+    "p95_latency_ms": 48.93
+  }
+}

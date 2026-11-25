@@ -94,13 +94,12 @@ async def _call_once(model: str, kwargs: dict[str, Any]) -> Any:
     return await litellm.acompletion(model=model, timeout=settings.llm_timeout_s, **kwargs)
 
 
-async def _call_with_retries(model: str, kwargs: dict[str, Any]) -> tuple[Any, int]:
+async def _attempts(model: str, kwargs: dict[str, Any]) -> tuple[Any, int]:
+    """Retry transient errors with exponential backoff and jitter; anything else propagates at once."""
     attempts = settings.llm_max_retries + 1 if runtime.hardened else 1
     retries = 0
     for attempt in range(attempts):
         try:
-            if runtime.hardened:
-                return await llm_breaker.call(_call_once, model, kwargs), retries
             return await _call_once(model, kwargs), retries
         except _TRANSIENT as exc:
             if attempt == attempts - 1:
@@ -110,6 +109,15 @@ async def _call_with_retries(model: str, kwargs: dict[str, Any]) -> tuple[Any, i
             log.warning("transient LLM error (%s); retry %d in %.1fs", type(exc).__name__, retries, delay)
             await asyncio.sleep(delay)
     raise AssertionError("unreachable")
+
+
+async def _call_with_retries(model: str, kwargs: dict[str, Any]) -> tuple[Any, int]:
+    """The breaker counts one *call* as failed only after its retries are exhausted. Counting each
+    attempt instead lets ordinary transient errors open the circuit and reject the very retries
+    meant to recover (measured by the fault harness: hardened success fell below baseline)."""
+    if runtime.hardened:
+        return await llm_breaker.call(_attempts, model, kwargs)
+    return await _attempts(model, kwargs)
 
 
 async def acomplete(
