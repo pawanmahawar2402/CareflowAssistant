@@ -1,9 +1,0 @@
-# local runtime state (checkpoints, tickets, KPI logs): regenerated on each run
-runtime/
-# environments and caches
-.venv/
-__pycache__/
-.pytest_cache/
-.DS_Store
-# secrets: keep the real .env out; .env.example is committed
-.env
