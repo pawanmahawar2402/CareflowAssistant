@@ -1,0 +1,34 @@
+# Render Blueprint: one web service (this app) and its secrets. Redis and Qdrant are external services.
+services:
+  - type: web
+    name: careflow
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    plan: standard            # the reranker model needs more memory than the free plan provides
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false           # set in the Render dashboard
+      - key: LANGFUSE_PUBLIC_KEY
+        sync: false
+      - key: LANGFUSE_SECRET_KEY
+        sync: false
+      - key: LANGFUSE_HOST
+        value: https://cloud.langfuse.com
+      - key: REDIS_URL
+        sync: false           # e.g. a Render Key Value instance, internal URL
+      - key: QDRANT_URL
+        sync: false           # e.g. Qdrant Cloud or a Qdrant private service
+      - key: CAREFLOW_DATA_DIR
+        value: data
+      - key: CAREFLOW_LLM_MODEL
+        value: gemini/gemini-3.5-flash-lite
+      - key: CAREFLOW_FALLBACK_LLM_MODEL
+        value: gemini/gemini-3.5-flash
+      - key: CAREFLOW_EMBED_MODEL
+        value: gemini/gemini-embedding-001
+    # Uncomment to keep paused cases and tickets across deploys (paid disk; without it they reset on each deploy):
+    # disk:
+    #   name: careflow-runtime
+    #   mountPath: /app/runtime
+    #   sizeGB: 1
