@@ -1,0 +1,4 @@
+plan_code,plan_name,annual_deductible_usd,coinsurance_pct,out_of_pocket_max_usd
+MERIDIAN-BRONZE,Meridian Bronze,4000,0.3,8000
+MERIDIAN-SILVER,Meridian Silver,2000,0.2,5500
+MERIDIAN-GOLD,Meridian Gold,500,0.1,3000

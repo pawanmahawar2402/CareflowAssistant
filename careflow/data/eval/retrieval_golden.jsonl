@@ -1,0 +1,15 @@
+{"id": "r01", "question": "How long does a standard pre-authorization decision take?", "expected_sources": ["preauthorization_policy"], "kind": "easy"}
+{"id": "r02", "question": "Which form do I submit for pre-authorization?", "expected_sources": ["preauthorization_policy", "imaging_services"], "kind": "exact_identifier"}
+{"id": "r03", "question": "What is the deductible on the Gold plan?", "expected_sources": ["plan_gold_summary", "copay_and_deductibles"], "kind": "near_duplicate"}
+{"id": "r04", "question": "What is the out-of-pocket maximum for Silver?", "expected_sources": ["plan_silver_summary", "copay_and_deductibles"], "kind": "near_duplicate"}
+{"id": "r05", "question": "Can Gold members see a specialist without a referral?", "expected_sources": ["referral_policy", "plan_gold_summary"], "kind": "near_duplicate"}
+{"id": "r06", "question": "What is the fee for cancelling an appointment late?", "expected_sources": ["scheduling_and_cancellation"], "kind": "easy"}
+{"id": "r07", "question": "How many days is a referral valid?", "expected_sources": ["referral_policy"], "kind": "easy"}
+{"id": "r08", "question": "Where is a knee MRI performed and what is its CPT code?", "expected_sources": ["imaging_services"], "kind": "exact_identifier"}
+{"id": "r09", "question": "Within how many days must an out-of-network claim be filed?", "expected_sources": ["billing_and_claims"], "kind": "html"}
+{"id": "r10", "question": "Which languages have free interpreter services?", "expected_sources": ["language_and_accessibility"], "kind": "easy"}
+{"id": "r11", "question": "What happens if my telehealth video visit drops?", "expected_sources": ["telehealth_policy"], "kind": "txt"}
+{"id": "r12", "question": "How much does an extra copy of my medical records cost?", "expected_sources": ["records_and_privacy"], "kind": "easy"}
+{"id": "r13", "question": "What is the mail-order drug co-pay on the Gold plan?", "expected_sources": ["plan_gold_summary"], "kind": "near_duplicate"}
+{"id": "r14", "question": "What is the coverage for dental implants?", "expected_sources": [], "kind": "unanswerable"}
+{"id": "r15", "question": "What is the cosmetic surgery co-pay?", "expected_sources": [], "kind": "unanswerable"}

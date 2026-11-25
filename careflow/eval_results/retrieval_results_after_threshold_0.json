@@ -1,0 +1,559 @@
+{
+  "run_at": "2026-11-24T18:02:35.056124+00:00",
+  "k": 4,
+  "baseline": "dense",
+  "embed_model": "gemini/gemini-embedding-001",
+  "rerank_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "rerank_refusal_threshold": 0.0,
+  "golden_questions": 15,
+  "summary": {
+    "dense": {
+      "precision_at_k": 0.6346,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "mean_latency_ms": 422.1,
+      "answerable_questions": 13
+    },
+    "hybrid": {
+      "precision_at_k": 0.5962,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "mean_latency_ms": 419.5,
+      "answerable_questions": 13
+    },
+    "hybrid_rerank": {
+      "precision_at_k": 0.5769,
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "mean_latency_ms": 985.6,
+      "answerable_questions": 13
+    },
+    "unanswerable_refused_by_hybrid_rerank": "2/2",
+    "answerable_top_rerank_score_min": 5.322,
+    "answerable_wrongly_refused_by_hybrid_rerank": []
+  },
+  "per_question": {
+    "r01": {
+      "dense": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "referral_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "imaging_services"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "preauthorization_policy",
+          "telehealth_policy",
+          "referral_policy",
+          "preauthorization_policy"
+        ],
+        "top_rerank_score": 9.395210266113281
+      }
+    },
+    "r02": {
+      "dense": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "imaging_services"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "preauthorization_policy",
+          "imaging_services"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "preauthorization_policy",
+          "imaging_services",
+          "preauthorization_policy",
+          "preauthorization_policy"
+        ],
+        "top_rerank_score": 7.805297374725342
+      }
+    },
+    "r03": {
+      "dense": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "copay_and_deductibles",
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "plan_gold_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "referral_policy",
+          "plan_gold_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "plan_silver_summary",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": 6.631210803985596
+      }
+    },
+    "r04": {
+      "dense": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "copay_and_deductibles",
+          "plan_silver_summary",
+          "copay_and_deductibles",
+          "plan_silver_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "copay_and_deductibles",
+          "plan_silver_summary",
+          "plan_silver_summary",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "plan_silver_summary",
+          "copay_and_deductibles",
+          "plan_gold_summary",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": 6.876062393188477
+      }
+    },
+    "r05": {
+      "dense": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "referral_policy",
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "plan_silver_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "referral_policy",
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "plan_silver_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "referral_policy",
+          "plan_gold_summary",
+          "plan_silver_summary",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": 6.421241760253906
+      }
+    },
+    "r06": {
+      "dense": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation",
+          "telehealth_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation",
+          "telehealth_policy",
+          "referral_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation",
+          "telehealth_policy"
+        ],
+        "top_rerank_score": 5.321966171264648
+      }
+    },
+    "r07": {
+      "dense": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "referral_policy",
+          "referral_policy",
+          "preauthorization_policy",
+          "referral_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.75,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "referral_policy",
+          "referral_policy",
+          "referral_policy",
+          "plan_silver_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "referral_policy",
+          "referral_policy",
+          "preauthorization_policy",
+          "billing_and_claims"
+        ],
+        "top_rerank_score": 8.747300148010254
+      }
+    },
+    "r08": {
+      "dense": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "imaging_services",
+          "imaging_services",
+          "preauthorization_policy",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "imaging_services",
+          "imaging_services",
+          "preauthorization_policy",
+          "referral_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "imaging_services",
+          "imaging_services",
+          "preauthorization_policy",
+          "records_and_privacy"
+        ],
+        "top_rerank_score": 7.282228469848633
+      }
+    },
+    "r09": {
+      "dense": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "billing_and_claims",
+          "billing_and_claims",
+          "referral_policy",
+          "preauthorization_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "billing_and_claims",
+          "billing_and_claims",
+          "preauthorization_policy",
+          "referral_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "billing_and_claims",
+          "billing_and_claims",
+          "referral_policy",
+          "referral_policy"
+        ],
+        "top_rerank_score": 10.01572322845459
+      }
+    },
+    "r10": {
+      "dense": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "language_and_accessibility",
+          "language_and_accessibility",
+          "scheduling_and_cancellation",
+          "telehealth_policy"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "language_and_accessibility",
+          "scheduling_and_cancellation",
+          "records_and_privacy",
+          "language_and_accessibility"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "language_and_accessibility",
+          "language_and_accessibility",
+          "imaging_services",
+          "records_and_privacy"
+        ],
+        "top_rerank_score": 9.4236421585083
+      }
+    },
+    "r11": {
+      "dense": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "telehealth_policy",
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation",
+          "scheduling_and_cancellation"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "telehealth_policy",
+          "scheduling_and_cancellation",
+          "escalation_policy",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "telehealth_policy",
+          "scheduling_and_cancellation",
+          "preauthorization_policy",
+          "scheduling_and_cancellation"
+        ],
+        "top_rerank_score": 5.896471977233887
+      }
+    },
+    "r12": {
+      "dense": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "records_and_privacy",
+          "records_and_privacy",
+          "copay_and_deductibles",
+          "scheduling_and_cancellation"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "records_and_privacy",
+          "records_and_privacy",
+          "copay_and_deductibles",
+          "billing_and_claims"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "records_and_privacy",
+          "records_and_privacy",
+          "copay_and_deductibles",
+          "scheduling_and_cancellation"
+        ],
+        "top_rerank_score": 7.32329797744751
+      }
+    },
+    "r13": {
+      "dense": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "plan_silver_summary",
+          "copay_and_deductibles"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "plan_gold_summary",
+          "copay_and_deductibles",
+          "referral_policy",
+          "plan_silver_summary"
+        ],
+        "top_rerank_score": null
+      },
+      "hybrid_rerank": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "mrr": 1.0,
+        "top_sources": [
+          "plan_gold_summary",
+          "plan_silver_summary",
+          "copay_and_deductibles",
+          "plan_gold_summary"
+        ],
+        "top_rerank_score": 5.738985061645508
+      }
+    },
+    "r14": {
+      "dense": {
+        "top_rerank_score": null,
+        "refused": false
+      },
+      "hybrid": {
+        "top_rerank_score": null,
+        "refused": false
+      },
+      "hybrid_rerank": {
+        "top_rerank_score": -10.130756378173828,
+        "refused": true
+      }
+    },
+    "r15": {
+      "dense": {
+        "top_rerank_score": null,
+        "refused": false
+      },
+      "hybrid": {
+        "top_rerank_score": null,
+        "refused": false
+      },
+      "hybrid_rerank": {
+        "top_rerank_score": -3.7079100608825684,
+        "refused": true
+      }
+    }
+  }
+}

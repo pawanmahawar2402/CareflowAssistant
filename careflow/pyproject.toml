@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=72"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "careflow"
+version = "0.1.0"
+description = "CareFlow – AI Care Coordination Assistant (IIT Hyderabad Capstone)"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

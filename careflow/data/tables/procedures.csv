@@ -1,0 +1,7 @@
+procedure_code,category,list_price_usd
+CONSULT-PCP,consultation,180
+CONSULT-SPEC,consultation,320
+TELEHEALTH,telehealth,90
+MRI-KNEE,imaging,1400
+CT-CHEST,imaging,1100
+LAB-PANEL,lab,150
