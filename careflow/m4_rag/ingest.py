@@ -20,7 +20,7 @@ async def ingest() -> int:
     files = iter_corpus()
     if not files:
         raise FileNotFoundError(f"No corpus files in {settings.corpus_dir}. Run: python generate_data.py")
-    client = QdrantClient(url=settings.qdrant_url)
+    client = QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key or None)
     if client.collection_exists(settings.qdrant_collection):
         client.delete_collection(settings.qdrant_collection)  # full rebuild keeps index == corpus
     client.create_collection(

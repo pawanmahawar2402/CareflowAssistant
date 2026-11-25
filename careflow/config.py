@@ -31,6 +31,7 @@ class Settings(BaseSettings):
 
     # ── Vector store / memory stores
     qdrant_url: str = "http://localhost:6333"
+    qdrant_api_key: str = ""  # required by Qdrant Cloud; leave empty for a local or private Qdrant
     qdrant_collection: str = "careflow_corpus"
     redis_url: str = "redis://localhost:6379/0"
     checkpoint_db: str = "runtime/checkpoints.sqlite"
@@ -59,7 +60,9 @@ class Settings(BaseSettings):
     rag_k_candidates: int = 12
     rag_rrf_k: int = 60
     rag_rerank_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-    rag_variant: str = "hybrid_rerank"  # dense | hybrid | hybrid_rerank
+    # dense | hybrid | hybrid_rerank. Default is `hybrid` so the service fits in a 512 MB free instance:
+    # the cross-encoder reranker (torch) is only loaded for hybrid_rerank. Set RAG_VARIANT=hybrid_rerank to restore it.
+    rag_variant: str = "hybrid"
     # below this the corpus is treated as not answering. Tuned on the retrieval golden set:
     # answerable top scores were all >= +5.3; unanswerable ones were -3.7 and -10.1. 0.0 sits in the gap.
     rag_min_rerank_score: float = 0.0

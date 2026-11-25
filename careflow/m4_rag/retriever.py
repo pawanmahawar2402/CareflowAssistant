@@ -43,7 +43,7 @@ def _tok(text: str) -> list[str]:
 
 class HybridRetriever:
     def __init__(self) -> None:
-        self._client = QdrantClient(url=settings.qdrant_url)
+        self._client = QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key or None)
         self._bm25: BM25Okapi | None = None
         self._payloads: list[dict] = []
         self._reranker = None
